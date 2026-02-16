@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2.1 Page</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Top-left text */
+#top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-align: left;
+}
+
+#top-left h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+#top-left p {
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Bottom-left text */
+#bottom-left {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  max-width: 300px; /* optional, keeps text from stretching too far */
+}
+
+#bottom-left h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+#bottom-left p {
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Top-right image */
+#top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px; /* adjust size */
+  height: auto;
+  z-index: 10;
+}
+
+/* Center circle */
+.circle {
+  width: 600px;  /* circle diameter */
+  height: 600px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  background: #111; /* fallback color */
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Video inside the circle */
+.circle video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Home link */
+#home {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#home a {
+  color: white;
+  text-decoration: none;
+}
+
+#home a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+/* Website link at bottom center */
+#website-link {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+
+#website-link a {
+  color: white;
+  text-decoration: none;
+}
+
+#website-link a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Top-left text -->
+<div id="top-left">
+  <h1>Materials</h1>
+  <p>Javascript, Pen plotter, acrylic paint</p>
+</div>
+
+<!-- Bottom-left text -->
+<div id="bottom-left">
+  <h1>Short Description</h1>
+  <p>using code to create an abstract image and then using the pen plotter to interpret the code and scrap the paint off, revealing the image.</p>
+</div>
+
+
+
+<!-- Center circle with video -->
+<div class="circle">
+  <img src="3.png" alt="Center Image">
+</div>
+
+<div id="home">
+  <a href="index.html">HOME</a>
+</div>
+
+</body>
+</html>

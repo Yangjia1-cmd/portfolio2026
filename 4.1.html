@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2.1 Page</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Top-left text */
+#top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-align: left;
+}
+
+#top-left h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+#top-left p {
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Bottom-left text */
+#bottom-left {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  max-width: 300px;
+}
+
+#bottom-left h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+#bottom-left p {
+  font-size: 1rem;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Top-right image */
+#top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: auto;
+  z-index: 10;
+}
+
+#top-right:hover {
+  opacity: 0.7;
+}
+/* Center circle */
+.circle {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Slideshow inside circle */
+.circle img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.circle img.active {
+  opacity: 1;
+}
+/* Home link */
+#home {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#home a {
+  color: white;
+  text-decoration: none;
+}
+
+#home a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Top-left text -->
+<div id="top-left">
+  <h1>Materials</h1>
+  <p>Adobe photoshop and illustrator, wood, acetate, laser printing</p>
+</div>
+
+<!-- Bottom-left text -->
+<div id="bottom-left">
+  <h1>Short Description</h1>
+  <p>createing a made up language printed on laser cut wood. User try to decode the language in the book by holding the book up aginst light</p>
+</div>
+
+<!-- Top-right image -->
+ <div id="top-right">   
+<img id="top-right" src="4.png" alt="Top Right" onclick="window.location.href='4.2.html'">
+<p>Learn more</p>
+</div>
+
+<!-- Center circle slideshow -->
+<div class="circle" id="circleSlideshow">
+  <img src="4.png" class="active">
+  <img src="4.1.png">
+  <img src="4.2.png">
+  <img src="4.3.png">
+  <img src="4.4.png">
+  <img src="4.5.png">
+  <img src="4.6.png">
+</div>
+<div id="home">
+  <a href="index.html">HOME</a>
+</div>
+
+
+<script>
+const slides = document.querySelectorAll('#circleSlideshow img');
+let currentSlide = 0;
+const SLIDE_DURATION = 5000; // 5 seconds
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+setInterval(nextSlide, SLIDE_DURATION);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rebecca Yang — Computational Weaving</title>
+<style>
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Slideshow background */
+#slideshow {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* Overlay UI */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background: rgba(0,0,0,0.25);
+}
+
+.title {
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.controls {
+  margin-top: 30px;
+  display: flex;
+  gap: 25px;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+}
+
+.controls span, .controls a {
+  color: white;
+  text-decoration: none;
+}
+
+.controls span:hover, .controls a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+.time {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Slideshow -->
+<div id="slideshow">
+  <img src="4.png" class="slide active">
+  <img src="4.1.png" class="slide">
+  <img src="4.2.png" class="slide">
+  <img src="4.3.png" class="slide">
+  <img src="4.4.png" class="slide">
+  <img src="4.5.png" class="slide">
+  <img src="4.6.png" class="slide">
+</div>
+
+<!-- Overlay UI -->
+<div class="overlay">
+  <div class="title">Rebecca Yang</div>
+  <div class="subtitle">Lexicon of Light</div>
+
+  <div class="time" id="time">00:00</div>
+
+  <div class="controls">
+    <span onclick="playSlideshow()">Play</span>
+    <span onclick="pauseSlideshow()">Pause</span>
+    <a href="4.1.html">Details</a>
+    <span onclick="window.location.href='index.html'">Archive</span>
+    <span onclick="window.location.href='info.html'">Info & Contact</span>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const timeEl = document.getElementById('time');
+
+let currentSlide = 0;
+let isPlaying = true;
+let slideInterval;
+let startTime = Date.now();
+
+const SLIDE_DURATION = 4000; // 5 seconds
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[index].classList.add('active');
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+    
+function playSlideshow() {
+  if (isPlaying) return;
+  isPlaying = true;
+  startTime = Date.now() - elapsedTime;
+  slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+}
+
+function pauseSlideshow() {
+  isPlaying = false;
+  clearInterval(slideInterval);
+}
+
+// Start slideshow
+slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+
+// Timer
+let elapsedTime = 0;
+setInterval(() => {
+  if (!isPlaying) return;
+  elapsedTime = Date.now() - startTime;
+  const totalSeconds = Math.floor(elapsedTime / 1000);
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  timeEl.textContent =
+    String(m).padStart(2, '0') + ':' +
+    String(s).padStart(2, '0');
+}, 1000);
+</script>
+
+</body>
+</html>
