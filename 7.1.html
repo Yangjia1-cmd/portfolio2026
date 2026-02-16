@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.1 Gallery</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.gallery {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* Home link */
+#home {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#home a {
+  color: white;
+  text-decoration: none;
+}
+
+#home a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <img src="7.png" alt="Image 7">
+  <img src="7.1.png" alt="Image 7.1">
+  <img src="7.2.png" alt="Image 7.2">
+  <img src="7.3.png" alt="Image 7.3">
+   <img src="7.4.png" alt="Image 7.4">
+  <img src="7.5.png" alt="Image 7.5">
+
+</div>
+
+<div id="home">
+  <a href="index.html">HOME</a>
+</div>
+
+</body>
+</html>

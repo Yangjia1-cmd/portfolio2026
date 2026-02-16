@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Image Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #111;
+      font-family: sans-serif;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 16px;
+    }
+
+    /* Mobile (default) */
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tablet */
+    @media (min-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 1000px) {
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Home link bottom-right */
+    .home {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .home a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .home a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gallery">
+    <img src="1.png" data-link="1.2.html">
+    <img src="2.png" data-link="2.2.html">
+    <img src="3.png" data-link="3.html">
+    <img src="4.png" data-link="4.2.html">
+    <img src="5.png" data-link="5.1.html">
+    <img src="6.png" data-link="6.1.html">
+    <img src="7.png" data-link="7.1.html">
+  </div>
+
+  <div class="home">
+    <a href="index.html">Home</a>
+  </div>
+
+  <script>
+    document.querySelectorAll(".gallery img").forEach(img => {
+      img.addEventListener("click", () => {
+        const link = img.getAttribute("data-link");
+        window.location.href = link;
+      });
+    });
+  </script>
+</body>
+</html>
